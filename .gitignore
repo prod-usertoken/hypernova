@@ -39,7 +39,7 @@ TODO
 coverage
 
 # build output
-lib
+#lib
 
 # Only apps should have lockfiles
 yarn.lock

@@ -150,8 +150,11 @@ class BatchManager {
 
     const result = getComponent(name, context);
 
-    return Promise.resolve(result).then((renderFn) => {
+    return Promise.resolve(result).then((functionIn) => {
       // ensure that we have this component registered
+      const renderFn = functionIn && functionIn[name]? functionIn[name]
+        : functionIn && functionIn.default? functionIn.default
+        : {};
       if (!renderFn || typeof renderFn !== 'function') {
         // component not registered
         context.statusCode = 404;
